@@ -227,10 +227,6 @@ The project includes comprehensive unit tests:
 # Run all tests
 dotnet test
 
-# Run tests with coverage
-dotnet test --collect:"XPlat Code Coverage"
-
-# Run specific test project
 dotnet test tests/VendingMachine.Tests/
 ```
 
