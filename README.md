@@ -82,7 +82,7 @@ A comprehensive REST API for a vending machine system built with .NET 8, featuri
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone  https://github.com/OmarShamkh/vending-machine-api.git
 cd VendingMachine
 ```
 
@@ -234,7 +234,6 @@ dotnet test --collect:"XPlat Code Coverage"
 dotnet test tests/VendingMachine.Tests/
 ```
 
-## Production Deployment
 
 ### Environment Variables
 
@@ -242,31 +241,11 @@ dotnet test tests/VendingMachine.Tests/
 - `JwtSettings__SecretKey`: JWT secret key
 - `JwtSettings__ExpirationInMinutes`: Token expiration time
 
-### Docker Support
-
-```bash
-# Build Docker image
-docker build -t vending-machine-api .
-
-# Run container
-docker run -p 8080:80 vending-machine-api
-```
 
 ## API Documentation
 
 Once the application is running, visit:
 
-- Swagger UI: `https://localhost:7001/swagger`
-- API Health: `https://localhost:7001/health`
+- Swagger UI: `https://localhost:5000/swagger`
 
-## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
