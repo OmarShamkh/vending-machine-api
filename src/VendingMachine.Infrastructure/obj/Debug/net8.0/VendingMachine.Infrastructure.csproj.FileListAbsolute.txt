@@ -1,0 +1,17 @@
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.AssemblyInfo.cs
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\bin\Debug\net8.0\VendingMachine.Infrastructure.deps.json
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\bin\Debug\net8.0\VendingMachine.Infrastructure.runtimeconfig.json
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\bin\Debug\net8.0\VendingMachine.Infrastructure.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\bin\Debug\net8.0\VendingMachine.Infrastructure.pdb
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\bin\Debug\net8.0\VendingMachine.Core.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\bin\Debug\net8.0\VendingMachine.Core.pdb
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingM.78EC265B.Up2Date
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\refint\VendingMachine.Infrastructure.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.pdb
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.genruntimeconfig.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\ref\VendingMachine.Infrastructure.dll

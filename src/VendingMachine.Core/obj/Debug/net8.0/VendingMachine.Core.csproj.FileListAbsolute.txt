@@ -1,0 +1,12 @@
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\bin\Debug\net8.0\VendingMachine.Core.deps.json
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\bin\Debug\net8.0\VendingMachine.Core.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\bin\Debug\net8.0\VendingMachine.Core.pdb
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.csproj.AssemblyReference.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.AssemblyInfoInputs.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.AssemblyInfo.cs
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.csproj.CoreCompileInputs.cache
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\refint\VendingMachine.Core.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.pdb
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\ref\VendingMachine.Core.dll

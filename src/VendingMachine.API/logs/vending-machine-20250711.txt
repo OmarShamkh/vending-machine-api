@@ -1,0 +1,882 @@
+2025-07-11 16:03:10.142 +03:00 [INF] Executed DbCommand (180ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [VendingMachineDb];
+2025-07-11 16:03:10.224 +03:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [VendingMachineDb] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-07-11 16:03:10.242 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:03:10.292 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2025-07-11 16:03:10.296 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [Deposit] decimal(18,2) NOT NULL,
+    [Role] int NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [UpdatedAt] datetime2 NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2025-07-11 16:03:10.299 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:03:10.301 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:03:10.304 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:03:10.306 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:03:10.308 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:03:10.311 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductName] nvarchar(100) NOT NULL,
+    [AmountAvailable] int NOT NULL,
+    [Cost] decimal(18,2) NOT NULL,
+    [SellerId] nvarchar(450) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [UpdatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_AspNetUsers_SellerId] FOREIGN KEY ([SellerId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);
+2025-07-11 16:03:10.314 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Transactions] (
+    [Id] int NOT NULL IDENTITY,
+    [BuyerId] nvarchar(450) NOT NULL,
+    [ProductId] int NOT NULL,
+    [Amount] int NOT NULL,
+    [TotalSpent] decimal(18,2) NOT NULL,
+    [Change] decimal(18,2) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Transactions] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Transactions_AspNetUsers_BuyerId] FOREIGN KEY ([BuyerId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Transactions_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE NO ACTION
+);
+2025-07-11 16:03:10.315 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2025-07-11 16:03:10.317 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2025-07-11 16:03:10.319 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2025-07-11 16:03:10.320 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2025-07-11 16:03:10.322 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2025-07-11 16:03:10.324 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2025-07-11 16:03:10.326 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2025-07-11 16:03:10.329 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_SellerId] ON [Products] ([SellerId]);
+2025-07-11 16:03:10.330 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Transactions_BuyerId] ON [Transactions] ([BuyerId]);
+2025-07-11 16:03:10.332 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Transactions_ProductId] ON [Transactions] ([ProductId]);
+2025-07-11 16:03:10.338 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:03:10.353 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:03:10.390 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:03:10.395 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:03:10.396 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:03:10.397 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:03:34.924 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - null null
+2025-07-11 16:03:34.967 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:03:35.058 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - 404 0 null 137.582ms
+2025-07-11 16:03:35.070 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/, Response status code: 404
+2025-07-11 16:03:43.793 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger.html - null null
+2025-07-11 16:03:43.802 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger.html - 404 0 null 9.6496ms
+2025-07-11 16:03:43.811 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger.html, Response status code: 404
+2025-07-11 16:04:17.463 +03:00 [INF] Application is shutting down...
+2025-07-11 16:08:26.218 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:08:26.294 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-07-11 16:08:26.373 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2025-07-11 16:08:26.380 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [Deposit] decimal(18,2) NOT NULL,
+    [Role] int NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [UpdatedAt] datetime2 NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2025-07-11 16:08:26.386 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:08:26.391 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:08:26.397 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:08:26.402 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:08:26.405 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-07-11 16:08:26.409 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductName] nvarchar(100) NOT NULL,
+    [AmountAvailable] int NOT NULL,
+    [Cost] decimal(18,2) NOT NULL,
+    [SellerId] nvarchar(450) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [UpdatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_AspNetUsers_SellerId] FOREIGN KEY ([SellerId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);
+2025-07-11 16:08:26.412 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Transactions] (
+    [Id] int NOT NULL IDENTITY,
+    [BuyerId] nvarchar(450) NOT NULL,
+    [ProductId] int NOT NULL,
+    [Amount] int NOT NULL,
+    [TotalSpent] decimal(18,2) NOT NULL,
+    [Change] decimal(18,2) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Transactions] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Transactions_AspNetUsers_BuyerId] FOREIGN KEY ([BuyerId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Transactions_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE NO ACTION
+);
+2025-07-11 16:08:26.417 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2025-07-11 16:08:26.420 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2025-07-11 16:08:26.424 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2025-07-11 16:08:26.426 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2025-07-11 16:08:26.428 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2025-07-11 16:08:26.429 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2025-07-11 16:08:26.431 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2025-07-11 16:08:26.434 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_SellerId] ON [Products] ([SellerId]);
+2025-07-11 16:08:26.436 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Transactions_BuyerId] ON [Transactions] ([BuyerId]);
+2025-07-11 16:08:26.438 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Transactions_ProductId] ON [Transactions] ([ProductId]);
+2025-07-11 16:08:26.446 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:08:26.463 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:08:26.504 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:08:26.507 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:08:26.508 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:08:26.509 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:08:36.866 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger - null null
+2025-07-11 16:08:36.925 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:08:36.990 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger - 404 0 null 131.7066ms
+2025-07-11 16:08:37.000 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger, Response status code: 404
+2025-07-11 16:08:58.576 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - null null
+2025-07-11 16:08:58.583 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - 404 0 null 6.9229ms
+2025-07-11 16:08:58.589 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/, Response status code: 404
+2025-07-11 16:10:11.174 +03:00 [INF] Application is shutting down...
+2025-07-11 16:10:22.132 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:10:22.186 +03:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-07-11 16:10:22.191 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:10:22.207 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:10:22.239 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:10:22.242 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:10:22.243 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:10:22.244 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:10:33.296 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger - null null
+2025-07-11 16:10:33.331 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:10:33.392 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger - 404 0 null 97.8922ms
+2025-07-11 16:10:33.400 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/swagger, Response status code: 404
+2025-07-11 16:10:59.899 +03:00 [INF] Application is shutting down...
+2025-07-11 16:12:25.216 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:12:25.275 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-07-11 16:12:25.281 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:12:25.297 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:12:25.341 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:12:25.344 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:12:25.345 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:12:25.346 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:12:29.314 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger - null null
+2025-07-11 16:12:29.400 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger - 301 0 null 86.8525ms
+2025-07-11 16:12:29.417 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2025-07-11 16:12:29.528 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 110.3495ms
+2025-07-11 16:12:29.614 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - null null
+2025-07-11 16:12:29.614 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - null null
+2025-07-11 16:12:29.618 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-11 16:12:29.670 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-11 16:12:29.670 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-11 16:12:29.679 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - 200 144929 text/css 64.8076ms
+2025-07-11 16:12:29.679 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 61.5563ms
+2025-07-11 16:12:29.697 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-11 16:12:29.703 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 88.8373ms
+2025-07-11 16:12:30.504 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2025-07-11 16:12:30.563 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - null null
+2025-07-11 16:12:30.571 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-11 16:12:30.574 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - 200 628 image/png 10.2906ms
+2025-07-11 16:12:30.622 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 117.6438ms
+2025-07-11 16:13:05.567 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-11 16:13:05.576 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:13:05.582 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:13:05.629 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:13:05.664 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:13:05.715 +03:00 [INF] Attempting to register user: omar
+2025-07-11 16:13:06.044 +03:00 [INF] Executed DbCommand (34ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:13:06.060 +03:00 [WRN] Registration failed for user omar: Passwords must have at least one uppercase ('A'-'Z').
+2025-07-11 16:13:06.065 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 16:13:06.074 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 404.9374ms
+2025-07-11 16:13:06.076 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:13:06.080 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 400 null application/json; charset=utf-8 513.1894ms
+2025-07-11 16:14:40.361 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-11 16:14:40.366 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:14:40.370 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:14:40.374 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:14:40.384 +03:00 [INF] Attempting to register user: omar
+2025-07-11 16:14:40.457 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:14:40.559 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:14:40.806 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Size = 256), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (DbType = DateTime2), @p18='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [CreatedAt], [Deposit], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [Role], [SecurityStamp], [TwoFactorEnabled], [UpdatedAt], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2025-07-11 16:14:40.838 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:14:40.846 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:14:40.849 +03:00 [ERR] Error during user registration for omar
+System.InvalidOperationException: Role SELLER does not exist.
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.AddToRoleAsync(TUser user, String normalizedRoleName, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.AddToRoleAsync(TUser user, String role)
+   at VendingMachine.API.Controllers.AuthController.Register(CreateUserDto createUserDto) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\Controllers\AuthController.cs:line 62
+2025-07-11 16:14:40.872 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 16:14:40.874 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 496.7662ms
+2025-07-11 16:14:40.875 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:14:40.876 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 500 null application/json; charset=utf-8 515.5413ms
+2025-07-11 16:30:49.193 +03:00 [INF] Application is shutting down...
+2025-07-11 16:30:54.468 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:30:54.541 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-07-11 16:30:54.547 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:30:54.565 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:30:54.608 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:30:54.611 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:30:54.613 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:30:54.613 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:31:19.620 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-11 16:31:19.643 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:31:19.645 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:31:19.675 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:31:19.694 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:31:19.730 +03:00 [INF] Attempting to register user: omar
+2025-07-11 16:31:19.916 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:31:19.985 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:31:20.094 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Size = 256), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (DbType = DateTime2), @p18='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [CreatedAt], [Deposit], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [Role], [SecurityStamp], [TwoFactorEnabled], [UpdatedAt], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2025-07-11 16:31:20.110 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:31:20.115 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:31:20.117 +03:00 [ERR] Error during user registration for omar
+System.InvalidOperationException: Role SELLER does not exist.
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserStore`9.AddToRoleAsync(TUser user, String normalizedRoleName, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.AddToRoleAsync(TUser user, String role)
+   at VendingMachine.API.Controllers.AuthController.Register(CreateUserDto createUserDto) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\Controllers\AuthController.cs:line 62
+2025-07-11 16:31:20.133 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 16:31:20.142 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 444.7018ms
+2025-07-11 16:31:20.143 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:31:20.147 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 500 null application/json; charset=utf-8 528.0662ms
+2025-07-11 16:32:07.392 +03:00 [INF] Application is shutting down...
+2025-07-11 16:32:17.442 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:32:17.501 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-07-11 16:32:17.672 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-07-11 16:32:17.688 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-07-11 16:32:17.761 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3);
+2025-07-11 16:32:17.779 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-07-11 16:32:17.782 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-07-11 16:32:17.786 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3);
+2025-07-11 16:32:17.790 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:32:17.807 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:32:17.850 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:32:17.853 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:32:17.855 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:32:17.856 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:32:21.825 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-11 16:32:21.851 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:32:21.856 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:32:21.891 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:32:21.913 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:32:21.948 +03:00 [INF] Attempting to register user: omar
+2025-07-11 16:32:21.977 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:32:22.020 +03:00 [WRN] Registration failed: Username omar already exists
+2025-07-11 16:32:22.026 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 16:32:22.041 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 121.6279ms
+2025-07-11 16:32:22.044 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:32:22.049 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 400 null application/json; charset=utf-8 224.9083ms
+2025-07-11 16:32:29.944 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-11 16:32:29.959 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:32:29.964 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:32:29.971 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:32:29.980 +03:00 [INF] Attempting to register user: omar
+2025-07-11 16:32:30.036 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:32:30.126 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:32:30.163 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Size = 256), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (DbType = DateTime2), @p18='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [CreatedAt], [Deposit], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [Role], [SecurityStamp], [TwoFactorEnabled], [UpdatedAt], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2025-07-11 16:32:30.181 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:32:30.216 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-07-11 16:32:30.223 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:32:30.237 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:32:30.277 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p20='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p21='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p6='?' (Size = 256), @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?' (Size = 256), @p11='?' (Size = 256), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (DbType = Int32), @p16='?' (Size = 4000), @p17='?' (DbType = Boolean), @p18='?' (DbType = DateTime2), @p19='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [CreatedAt] = @p4, [Deposit] = @p5, [Email] = @p6, [EmailConfirmed] = @p7, [LockoutEnabled] = @p8, [LockoutEnd] = @p9, [NormalizedEmail] = @p10, [NormalizedUserName] = @p11, [PasswordHash] = @p12, [PhoneNumber] = @p13, [PhoneNumberConfirmed] = @p14, [Role] = @p15, [SecurityStamp] = @p16, [TwoFactorEnabled] = @p17, [UpdatedAt] = @p18, [UserName] = @p19
+OUTPUT 1
+WHERE [Id] = @p20 AND [ConcurrencyStamp] = @p21;
+2025-07-11 16:32:30.290 +03:00 [INF] User omar registered successfully
+2025-07-11 16:32:30.293 +03:00 [INF] Executing CreatedAtActionResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-11 16:32:30.324 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 349.3723ms
+2025-07-11 16:32:30.325 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:32:30.327 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 201 null application/json; charset=utf-8 382.5551ms
+2025-07-11 16:32:49.911 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 49
+2025-07-11 16:32:49.920 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:32:49.932 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-11 16:32:49.952 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:32:49.976 +03:00 [INF] Login attempt for user: omar
+2025-07-11 16:32:49.982 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:32:50.096 +03:00 [INF] User omar logged in successfully
+2025-07-11 16:32:50.098 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-11 16:32:50.101 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 146.4714ms
+2025-07-11 16:32:50.104 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-11 16:32:50.109 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 197.0244ms
+2025-07-11 16:33:07.322 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/49817256-8fab-443d-9a60-7998105f20aa - null null
+2025-07-11 16:33:07.329 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-11 16:33:07.334 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.String) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:33:07.349 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-11 16:33:07.354 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-11 16:33:07.357 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 19.9192ms
+2025-07-11 16:33:07.358 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-11 16:33:07.359 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/49817256-8fab-443d-9a60-7998105f20aa - 200 null application/json; charset=utf-8 36.9887ms
+2025-07-11 16:33:21.587 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-11 16:33:21.594 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-11 16:33:21.599 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-11 16:33:21.608 +03:00 [INF] Retrieving all products
+2025-07-11 16:33:21.671 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], COALESCE([a].[UserName], N'') AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[SellerId] = [a].[Id]
+2025-07-11 16:33:21.674 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-11 16:33:21.681 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 78.0954ms
+2025-07-11 16:33:21.683 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-11 16:33:21.684 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 96.5935ms
+2025-07-11 16:33:36.283 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Products - application/json 69
+2025-07-11 16:33:36.288 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:33:36.297 +03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Seller)
+2025-07-11 16:33:36.303 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-11 16:33:36.305 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Products - 401 0 null 21.8028ms
+2025-07-11 16:34:23.574 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2025-07-11 16:34:23.631 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 56.8235ms
+2025-07-11 16:34:24.995 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2025-07-11 16:34:25.138 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 143.0628ms
+2025-07-11 16:34:28.141 +03:00 [INF] Application is shutting down...
+2025-07-11 16:34:33.223 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-11 16:34:33.286 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2025-07-11 16:34:33.435 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-07-11 16:34:33.472 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-07-11 16:34:33.477 +03:00 [INF] Starting Vending Machine API
+2025-07-11 16:34:33.492 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 16:34:33.535 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-11 16:34:33.538 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 16:34:33.539 +03:00 [INF] Hosting environment: Production
+2025-07-11 16:34:33.540 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-11 16:34:35.724 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2025-07-11 16:34:35.791 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 67.3827ms
+2025-07-11 16:34:35.993 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2025-07-11 16:34:36.123 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 129.9934ms
+2025-07-11 16:34:52.577 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Products - application/json 69
+2025-07-11 16:34:52.590 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-11 16:34:52.593 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:34:52.677 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API)'
+2025-07-11 16:34:52.699 +03:00 [INF] Route matched with {action = "CreateProduct", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateProduct(VendingMachine.Core.DTOs.CreateProductDto) on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-11 16:34:52.730 +03:00 [INF] Creating new product: product 1
+2025-07-11 16:34:52.877 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100), @p4='?' (Size = 450), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([AmountAvailable], [Cost], [CreatedAt], [ProductName], [SellerId], [UpdatedAt])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-11 16:34:52.901 +03:00 [INF] Product product 1 created successfully with ID: 1
+2025-07-11 16:34:52.909 +03:00 [INF] Executing CreatedAtActionResult, writing value of type 'VendingMachine.Core.DTOs.ProductResponseDto'.
+2025-07-11 16:34:52.934 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API) in 229.4283ms
+2025-07-11 16:34:52.937 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API)'
+2025-07-11 16:34:52.941 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Products - 201 null application/json; charset=utf-8 364.8741ms
+2025-07-11 16:35:05.468 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products/1 - null null
+2025-07-11 16:35:05.474 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProduct (VendingMachine.API)'
+2025-07-11 16:35:05.480 +03:00 [INF] Route matched with {action = "GetProduct", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProduct(Int32) on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-11 16:35:05.491 +03:00 [INF] Retrieving product with ID: 1
+2025-07-11 16:35:05.615 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[SellerId], [p].[UpdatedAt], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [Products] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[SellerId] = [a].[Id]
+WHERE [p].[Id] = @__id_0
+2025-07-11 16:35:05.667 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.ProductResponseDto'.
+2025-07-11 16:35:05.670 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProduct (VendingMachine.API) in 188.0744ms
+2025-07-11 16:35:05.671 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProduct (VendingMachine.API)'
+2025-07-11 16:35:05.674 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products/1 - 200 null application/json; charset=utf-8 206.375ms
+2025-07-11 16:36:09.288 +03:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/Products/1 - application/json 77
+2025-07-11 16:36:09.292 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:36:09.295 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.UpdateProduct (VendingMachine.API)'
+2025-07-11 16:36:09.304 +03:00 [INF] Route matched with {action = "UpdateProduct", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProduct(Int32, VendingMachine.Core.DTOs.UpdateProductDto) on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-11 16:36:09.316 +03:00 [INF] Updating product with ID: 1
+2025-07-11 16:36:09.327 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[SellerId], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0
+2025-07-11 16:36:09.339 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Products] SET [ProductName] = @p0, [UpdatedAt] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2025-07-11 16:36:09.341 +03:00 [INF] Product 1 updated successfully
+2025-07-11 16:36:09.342 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.ProductResponseDto'.
+2025-07-11 16:36:09.342 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.UpdateProduct (VendingMachine.API) in 35.9189ms
+2025-07-11 16:36:09.343 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.UpdateProduct (VendingMachine.API)'
+2025-07-11 16:36:09.344 +03:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5000/api/Products/1 - 200 null application/json; charset=utf-8 56.0153ms
+2025-07-11 16:36:21.972 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-11 16:36:21.976 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-11 16:36:21.979 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-11 16:36:21.985 +03:00 [INF] Retrieving all products
+2025-07-11 16:36:22.008 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], COALESCE([a].[UserName], N'') AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [AspNetUsers] AS [a] ON [p].[SellerId] = [a].[Id]
+2025-07-11 16:36:22.011 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-11 16:36:22.012 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 31.1283ms
+2025-07-11 16:36:22.013 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-11 16:36:22.014 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 42.4458ms
+2025-07-11 16:36:29.038 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 19
+2025-07-11 16:36:29.041 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:36:29.045 +03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Buyer)
+2025-07-11 16:36:29.048 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-07-11 16:36:29.051 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 403 0 null 12.642ms
+2025-07-11 16:36:48.364 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 63
+2025-07-11 16:36:48.368 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:36:48.369 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:36:48.375 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:36:48.383 +03:00 [INF] Attempting to register user: ahmed
+2025-07-11 16:36:48.395 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:36:48.459 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:36:48.481 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Size = 256), @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (DbType = DateTime2), @p18='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [CreatedAt], [Deposit], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [Role], [SecurityStamp], [TwoFactorEnabled], [UpdatedAt], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2025-07-11 16:36:48.494 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:36:48.515 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-07-11 16:36:48.522 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-07-11 16:36:48.529 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:36:48.550 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p20='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p21='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p6='?' (Size = 256), @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?' (Size = 256), @p11='?' (Size = 256), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (DbType = Int32), @p16='?' (Size = 4000), @p17='?' (DbType = Boolean), @p18='?' (DbType = DateTime2), @p19='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [CreatedAt] = @p4, [Deposit] = @p5, [Email] = @p6, [EmailConfirmed] = @p7, [LockoutEnabled] = @p8, [LockoutEnd] = @p9, [NormalizedEmail] = @p10, [NormalizedUserName] = @p11, [PasswordHash] = @p12, [PhoneNumber] = @p13, [PhoneNumberConfirmed] = @p14, [Role] = @p15, [SecurityStamp] = @p16, [TwoFactorEnabled] = @p17, [UpdatedAt] = @p18, [UserName] = @p19
+OUTPUT 1
+WHERE [Id] = @p20 AND [ConcurrencyStamp] = @p21;
+2025-07-11 16:36:48.558 +03:00 [INF] User ahmed registered successfully
+2025-07-11 16:36:48.559 +03:00 [INF] Executing CreatedAtActionResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-11 16:36:48.561 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 184.5404ms
+2025-07-11 16:36:48.562 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-11 16:36:48.563 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 201 null application/json; charset=utf-8 198.5186ms
+2025-07-11 16:37:02.930 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 50
+2025-07-11 16:37:02.934 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:37:02.936 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-11 16:37:02.942 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-11 16:37:02.947 +03:00 [INF] Login attempt for user: ahmed
+2025-07-11 16:37:02.960 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:37:03.021 +03:00 [INF] User ahmed logged in successfully
+2025-07-11 16:37:03.024 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-11 16:37:03.026 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 81.9504ms
+2025-07-11 16:37:03.027 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-11 16:37:03.027 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 97.4256ms
+2025-07-11 16:37:14.545 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 19
+2025-07-11 16:37:14.549 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:37:14.551 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-11 16:37:14.557 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-11 16:37:14.561 +03:00 [INF] Deposit attempt: 100 cents
+2025-07-11 16:37:14.572 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-11 16:37:14.577 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:37:14.586 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p18='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p19='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (DbType = Int32), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (DbType = DateTime2), @p17='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [CreatedAt] = @p2, [Deposit] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [Role] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UpdatedAt] = @p16, [UserName] = @p17
+OUTPUT 1
+WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
+2025-07-11 16:37:14.588 +03:00 [INF] Deposit successful: 100 cents added to user 4f865195-c7da-4149-bcf8-835304fbd25a. New balance: 100.00
+2025-07-11 16:37:14.589 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 16:37:14.591 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 31.9006ms
+2025-07-11 16:37:14.592 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-11 16:37:14.592 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 200 null application/json; charset=utf-8 47.1781ms
+2025-07-11 16:37:26.336 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - application/json 35
+2025-07-11 16:37:26.339 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:37:26.340 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-11 16:37:26.345 +03:00 [INF] Route matched with {action = "Buy", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Buy(VendingMachine.Core.DTOs.BuyDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-11 16:37:26.358 +03:00 [INF] Purchase attempt: Product 1, Amount 5
+2025-07-11 16:37:26.371 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-11 16:37:26.378 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__buyDto_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[SellerId], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__buyDto_ProductId_0
+2025-07-11 16:37:26.379 +03:00 [WRN] Insufficient stock for product 1. Requested: 5, Available: 3
+2025-07-11 16:37:26.380 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 16:37:26.382 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) in 34.787ms
+2025-07-11 16:37:26.384 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-11 16:37:26.385 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - 400 null application/json; charset=utf-8 48.932ms
+2025-07-11 16:37:34.086 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - application/json 35
+2025-07-11 16:37:34.089 +03:00 [INF] CORS policy execution successful.
+2025-07-11 16:37:34.090 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-11 16:37:34.091 +03:00 [INF] Route matched with {action = "Buy", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Buy(VendingMachine.Core.DTOs.BuyDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-11 16:37:34.093 +03:00 [INF] Purchase attempt: Product 1, Amount 2
+2025-07-11 16:37:34.099 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-07-11 16:37:34.107 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__buyDto_ProductId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[SellerId], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__buyDto_ProductId_0
+2025-07-11 16:37:34.114 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Deposit], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[Role], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UpdatedAt], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-07-11 16:37:34.123 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-07-11 16:37:34.129 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p18='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p19='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (DbType = Int32), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (DbType = DateTime2), @p17='?' (Size = 256), @p26='?' (DbType = Int32), @p20='?' (DbType = Int32), @p21='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p22='?' (DbType = DateTime2), @p23='?' (Size = 100), @p24='?' (Size = 450), @p25='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [CreatedAt] = @p2, [Deposit] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [Role] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UpdatedAt] = @p16, [UserName] = @p17
+OUTPUT 1
+WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
+UPDATE [Products] SET [AmountAvailable] = @p20, [Cost] = @p21, [CreatedAt] = @p22, [ProductName] = @p23, [SellerId] = @p24, [UpdatedAt] = @p25
+OUTPUT 1
+WHERE [Id] = @p26;
+2025-07-11 16:37:34.143 +03:00 [WRN] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+2025-07-11 16:37:34.151 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 450), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Transactions] ([Amount], [BuyerId], [Change], [CreatedAt], [ProductId], [TotalSpent])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-11 16:37:34.156 +03:00 [INF] Purchase successful: User 4f865195-c7da-4149-bcf8-835304fbd25a bought 2 of product 1 for 10.00. Change: 90.00
+2025-07-11 16:37:34.158 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.BuyResponseDto'.
+2025-07-11 16:37:34.160 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) in 68.3946ms
+2025-07-11 16:37:34.161 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-11 16:37:34.162 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - 200 null application/json; charset=utf-8 75.7578ms
+2025-07-11 16:43:20.928 +03:00 [INF] Application is shutting down...
