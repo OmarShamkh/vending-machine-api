@@ -34,7 +34,8 @@ public class AuthController : ControllerBase
                 Username = user.Username,
                 Deposit = user.Deposit,
                 Role = user.Role,
-                CreatedAt = user.CreatedAt
+                CreatedAt = user.CreatedAt,
+                RowVersion = user.RowVersion
             };
             return Ok(userResponse);
         }
@@ -62,7 +63,8 @@ public class AuthController : ControllerBase
                 Username = user.Username,
                 Deposit = user.Deposit,
                 Role = user.Role,
-                CreatedAt = user.CreatedAt
+                CreatedAt = user.CreatedAt,
+                RowVersion = user.RowVersion
             };
             return Ok(new { token, user = userResponse });
         }
@@ -78,7 +80,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var user = await _userService.GetByUsernameAsync(id.ToString());
+            var user = await _userService.GetByIdAsync(id);
             if (user == null)
             {
                 return NotFound(new { message = "User not found" });
@@ -89,7 +91,8 @@ public class AuthController : ControllerBase
                 Username = user.Username,
                 Deposit = user.Deposit,
                 Role = user.Role,
-                CreatedAt = user.CreatedAt
+                CreatedAt = user.CreatedAt,
+                RowVersion = user.RowVersion
             };
             return Ok(userResponse);
         }

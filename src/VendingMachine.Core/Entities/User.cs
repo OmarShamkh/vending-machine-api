@@ -19,4 +19,6 @@ public class User
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+    [Timestamp]
+    public byte[] RowVersion { get; set; } = Array.Empty<byte>();
 } 

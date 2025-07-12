@@ -2,13 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VendingMachine.Core.DTOs;
 
-public class DepositDto
-{
-    [Required]
-    [Range(5, 100, ErrorMessage = "Only 5, 10, 20, 50, and 100 cent coins are accepted")]
-    public int Amount { get; set; }
-}
-
 public class BuyDto
 {
     [Required]

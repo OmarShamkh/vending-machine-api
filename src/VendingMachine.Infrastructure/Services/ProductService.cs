@@ -27,7 +27,8 @@ public class ProductService
                 SellerId = p.SellerId,
                 SellerName = p.Seller.Username,
                 CreatedAt = p.CreatedAt,
-                UpdatedAt = p.UpdatedAt
+                UpdatedAt = p.UpdatedAt,
+                RowVersion = p.RowVersion
             }).ToListAsync();
     }
 
@@ -44,7 +45,8 @@ public class ProductService
             SellerId = p.SellerId,
             SellerName = p.Seller.Username,
             CreatedAt = p.CreatedAt,
-            UpdatedAt = p.UpdatedAt
+            UpdatedAt = p.UpdatedAt,
+            RowVersion = p.RowVersion
         };
     }
 
@@ -58,9 +60,17 @@ public class ProductService
             SellerId = sellerId,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
+            // RowVersion is set by the database
         };
         _context.Products.Add(product);
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new Exception("Product creation failed due to a concurrent update. Please try again.");
+        }
         return await GetByIdAsync(product.Id) ?? throw new Exception("Product creation failed");
     }
 
@@ -69,6 +79,10 @@ public class ProductService
         var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id && p.SellerId == sellerId);
         if (product == null) 
             return null;
+
+        // Set RowVersion for concurrency check
+        if (dto.RowVersion != null)
+            _context.Entry(product).Property("RowVersion").OriginalValue = dto.RowVersion;
 
         if (!string.IsNullOrEmpty(dto.ProductName)) 
             product.ProductName = dto.ProductName;
@@ -80,7 +94,14 @@ public class ProductService
             product.Cost = dto.Cost.Value;
 
         product.UpdatedAt = DateTime.UtcNow;
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new Exception("Product update failed due to a concurrent update. Please try again.");
+        }
         return await GetByIdAsync(product.Id);
     }
 
@@ -91,7 +112,14 @@ public class ProductService
             return false;
 
         _context.Products.Remove(product);
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new Exception("Product deletion failed due to a concurrent update. Please try again.");
+        }
         return true;
     }
 } 

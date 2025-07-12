@@ -33,17 +33,26 @@ public class ProductsController : ControllerBase
     {
         var sellerId = int.Parse(User.FindFirst("nameid")!.Value);
         var product = await _productService.CreateAsync(dto, sellerId);
-        return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+        return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product); // product includes RowVersion
     }
 
     [HttpPut("{id}")]
     [Authorize(Policy = "SellerOnly")]
     public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductDto dto)
     {
+        if (dto.RowVersion == null)
+            return BadRequest(new { message = "RowVersion is required for concurrency control." });
         var sellerId = int.Parse(User.FindFirst("nameid")!.Value);
-        var product = await _productService.UpdateAsync(id, dto, sellerId);
-        if (product == null) return Forbid();
-        return Ok(product);
+        try
+        {
+            var product = await _productService.UpdateAsync(id, dto, sellerId);
+            if (product == null) return Forbid();
+            return Ok(product); // product includes RowVersion
+        }
+        catch (Exception ex) when (ex.Message.Contains("concurrent update"))
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
 
     [HttpDelete("{id}")]
@@ -51,8 +60,10 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> DeleteProduct(int id)
     {
         var sellerId = int.Parse(User.FindFirst("nameid")!.Value);
+        // Optionally fetch product before delete to return RowVersion
+        var product = await _productService.GetByIdAsync(id);
         var result = await _productService.DeleteAsync(id, sellerId);
         if (!result) return Forbid();
-        return NoContent();
+        return Ok(new { deleted = true, rowVersion = product?.RowVersion });
     }
 } 

@@ -22,6 +22,8 @@ public class VendingMachineDbContext : DbContext
             entity.Property(e => e.PasswordHash).IsRequired();
             entity.Property(e => e.Role).IsRequired();
             entity.Property(e => e.Deposit).HasColumnType("decimal(18,2)");
+            entity.Property(e => e.RowVersion)
+                .IsRowVersion();
         });
 
         // Configure Product entity
@@ -34,6 +36,8 @@ public class VendingMachineDbContext : DbContext
             entity.Property(e => e.SellerId).IsRequired();
             entity.Property(e => e.CreatedAt).IsRequired();
             entity.Property(e => e.UpdatedAt).IsRequired();
+            entity.Property(e => e.RowVersion)
+                .IsRowVersion();
 
             entity.HasOne(e => e.Seller)
                 .WithMany(e => e.Products)

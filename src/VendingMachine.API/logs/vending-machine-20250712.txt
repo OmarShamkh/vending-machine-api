@@ -1111,3 +1111,750 @@ WHERE [Id] = @p19;
 2025-07-12 17:49:10.275 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) in 89.9398ms
 2025-07-12 17:49:10.276 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
 2025-07-12 17:49:10.277 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - 200 null application/json; charset=utf-8 99.3555ms
+2025-07-12 17:57:59.039 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 17:57:59.492 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-12 17:57:59.497 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 17:57:59.498 +03:00 [INF] Hosting environment: Development
+2025-07-12 17:57:59.499 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-12 17:58:09.386 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - null null
+2025-07-12 17:58:10.431 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-12 17:58:11.036 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - 404 0 null 1665.0635ms
+2025-07-12 17:58:11.048 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/, Response status code: 404
+2025-07-12 17:58:15.334 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger - null null
+2025-07-12 17:58:15.397 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger - 301 0 null 63.8558ms
+2025-07-12 17:58:15.401 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2025-07-12 17:58:15.483 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 82.2234ms
+2025-07-12 17:58:15.493 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - null null
+2025-07-12 17:58:15.495 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - null null
+2025-07-12 17:58:15.495 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-12 17:58:15.522 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_vs/browserLink - null null
+2025-07-12 17:58:15.495 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-12 17:58:15.574 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13772 application/javascript; charset=utf-8 79.1756ms
+2025-07-12 17:58:15.657 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-12 17:58:15.657 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-12 17:58:15.674 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 178.888ms
+2025-07-12 17:58:15.688 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-12 17:58:15.685 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - 200 144929 text/css 191.609ms
+2025-07-12 17:58:15.697 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 202.7639ms
+2025-07-12 17:58:15.748 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 226.2544ms
+2025-07-12 17:58:15.938 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2025-07-12 17:58:15.982 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - null null
+2025-07-12 17:58:15.987 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-12 17:58:15.988 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - 200 628 image/png 6.4795ms
+2025-07-12 17:58:16.175 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 237.542ms
+2025-07-12 17:58:31.868 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 50
+2025-07-12 17:58:31.880 +03:00 [INF] CORS policy execution successful.
+2025-07-12 17:58:31.888 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 17:58:31.918 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 17:58:32.423 +03:00 [INF] Executing action method VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) - Validation state: "Valid"
+2025-07-12 17:58:33.722 +03:00 [INF] Executed DbCommand (69ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 17:58:33.831 +03:00 [INF] Executed action method VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1403.4331ms.
+2025-07-12 17:58:33.837 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 17:58:33.859 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 1934.1396ms
+2025-07-12 17:58:33.861 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 17:58:33.868 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 2000.6229ms
+2025-07-12 17:58:45.660 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Buyer/coins - null null
+2025-07-12 17:58:45.671 +03:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=role and Claim.Value is one of the following values: (Buyer)
+2025-07-12 17:58:45.676 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-12 17:58:45.679 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Buyer/coins - 401 0 null 18.6656ms
+2025-07-12 17:58:51.099 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Buyer/coins - null null
+2025-07-12 17:58:51.150 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.GetValidCoins (VendingMachine.API)'
+2025-07-12 17:58:51.152 +03:00 [INF] Route matched with {action = "GetValidCoins", controller = "Buyer"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetValidCoins() on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 17:58:51.176 +03:00 [INF] Executing action method VendingMachine.API.Controllers.BuyerController.GetValidCoins (VendingMachine.API) - Validation state: "Valid"
+2025-07-12 17:58:51.179 +03:00 [INF] Executed action method VendingMachine.API.Controllers.BuyerController.GetValidCoins (VendingMachine.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.0116ms.
+2025-07-12 17:58:51.181 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.Int32[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 17:58:51.183 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.GetValidCoins (VendingMachine.API) in 29.9325ms
+2025-07-12 17:58:51.184 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.GetValidCoins (VendingMachine.API)'
+2025-07-12 17:58:51.185 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Buyer/coins - 200 null application/json; charset=utf-8 86.3558ms
+2025-07-12 17:59:05.493 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - application/json 35
+2025-07-12 17:59:05.496 +03:00 [INF] CORS policy execution successful.
+2025-07-12 17:59:05.502 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-12 17:59:05.519 +03:00 [INF] Route matched with {action = "Buy", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Buy(VendingMachine.Core.DTOs.BuyDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 17:59:05.566 +03:00 [INF] Executing action method VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) - Validation state: "Valid"
+2025-07-12 17:59:05.681 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 17:59:05.694 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[SellerId], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__p_0
+2025-07-12 17:59:05.861 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) in 340.0298ms
+2025-07-12 17:59:05.864 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-12 17:59:05.868 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: Insufficient stock for this product
+   at VendingMachine.Infrastructure.Services.BuyerService.BuyAsync(Int32 userId, Int32 productId, Int32 amount) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\Services\BuyerService.cs:line 45
+   at VendingMachine.API.Controllers.BuyerController.Buy(BuyDto dto) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\Controllers\BuyerController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-12 17:59:05.919 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - 500 null text/plain; charset=utf-8 426.4403ms
+2025-07-12 17:59:11.322 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 19
+2025-07-12 17:59:11.327 +03:00 [INF] CORS policy execution successful.
+2025-07-12 17:59:11.328 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 17:59:11.333 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 17:59:11.349 +03:00 [INF] Executing action method VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) - Validation state: "Valid"
+2025-07-12 17:59:11.394 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 17:59:11.477 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Deposit] = @p0, [UpdatedAt] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2025-07-12 17:59:11.487 +03:00 [INF] Executed action method VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 136.5017ms.
+2025-07-12 17:59:11.488 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 17:59:11.493 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 159.0173ms
+2025-07-12 17:59:11.495 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 17:59:11.495 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 200 null application/json; charset=utf-8 173.1988ms
+2025-07-12 17:59:17.525 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - application/json 35
+2025-07-12 17:59:17.527 +03:00 [INF] CORS policy execution successful.
+2025-07-12 17:59:17.530 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-12 17:59:17.532 +03:00 [INF] Route matched with {action = "Buy", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Buy(VendingMachine.Core.DTOs.BuyDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 17:59:17.552 +03:00 [INF] Executing action method VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) - Validation state: "Valid"
+2025-07-12 17:59:17.557 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 17:59:17.562 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[SellerId], [p].[UpdatedAt]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__p_0
+2025-07-12 17:59:17.604 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API) in 70.4131ms
+2025-07-12 17:59:17.605 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Buy (VendingMachine.API)'
+2025-07-12 17:59:17.607 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: Insufficient stock for this product
+   at VendingMachine.Infrastructure.Services.BuyerService.BuyAsync(Int32 userId, Int32 productId, Int32 amount) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\Services\BuyerService.cs:line 45
+   at VendingMachine.API.Controllers.BuyerController.Buy(BuyDto dto) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\Controllers\BuyerController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-12 17:59:17.611 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/buy - 500 null text/plain; charset=utf-8 86.3781ms
+2025-07-12 17:59:25.798 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-12 17:59:25.802 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 17:59:25.806 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 17:59:25.855 +03:00 [INF] Executing action method VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) - Validation state: "Valid"
+2025-07-12 17:59:25.912 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], [u].[Username] AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+2025-07-12 17:59:25.916 +03:00 [INF] Executed action method VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 59.636ms.
+2025-07-12 17:59:25.917 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 17:59:25.920 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 111.0884ms
+2025-07-12 17:59:25.921 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 17:59:25.922 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 123.4667ms
+2025-07-12 18:23:49.327 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 18:23:49.413 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-12 18:23:49.417 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 18:23:49.418 +03:00 [INF] Hosting environment: Development
+2025-07-12 18:23:49.419 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-12 18:23:56.597 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2025-07-12 18:23:56.724 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 128.7943ms
+2025-07-12 18:23:57.728 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2025-07-12 18:23:57.868 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 139.4783ms
+2025-07-12 18:24:08.916 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 49
+2025-07-12 18:24:08.930 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-12 18:24:08.933 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:24:08.996 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:24:09.044 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:24:10.529 +03:00 [ERR] Failed executing DbCommand (59ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:24:10.566 +03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'VendingMachine.Infrastructure.Data.VendingMachineDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'RowVersion'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:e9ecd302-2c9c-4384-bf07-9ad0bd9245d2
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'RowVersion'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:e9ecd302-2c9c-4384-bf07-9ad0bd9245d2
+Error Number:207,State:1,Class:16
+2025-07-12 18:24:10.574 +03:00 [ERR] Error during login for user Omar
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'RowVersion'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at VendingMachine.Infrastructure.Services.UserService.AuthenticateAsync(String username, String password) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\Services\UserService.cs:line 41
+   at VendingMachine.API.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\Controllers\AuthController.cs:line 53
+ClientConnectionId:e9ecd302-2c9c-4384-bf07-9ad0bd9245d2
+Error Number:207,State:1,Class:16
+2025-07-12 18:24:10.594 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:24:10.602 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 1550.55ms
+2025-07-12 18:24:10.603 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:24:10.611 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 500 null application/json; charset=utf-8 1695.5339ms
+2025-07-12 18:24:32.339 +03:00 [INF] Application is shutting down...
+2025-07-12 18:25:49.064 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-12 18:25:49.135 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-12 18:25:49.140 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-12 18:25:49.142 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-12 18:25:49.163 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-12 18:25:49.177 +03:00 [INF] Applying migration '20250712152540_AddRowVersionToUserAndProduct'.
+2025-07-12 18:25:49.276 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Users] ADD [RowVersion] rowversion NOT NULL;
+2025-07-12 18:25:49.295 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Products] ADD [RowVersion] rowversion NOT NULL;
+2025-07-12 18:25:49.311 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250712152540_AddRowVersionToUserAndProduct', N'8.0.0');
+2025-07-12 18:26:07.866 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 18:26:07.959 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-12 18:26:07.962 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 18:26:07.963 +03:00 [INF] Hosting environment: Development
+2025-07-12 18:26:07.964 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-12 18:26:11.763 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2025-07-12 18:26:11.902 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 139.5854ms
+2025-07-12 18:26:12.453 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2025-07-12 18:26:12.683 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 229.8039ms
+2025-07-12 18:26:24.879 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-12 18:26:24.891 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-12 18:26:24.893 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:26:24.940 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:26:24.967 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:26:26.285 +03:00 [INF] Executed DbCommand (38ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Username] = @__username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-12 18:26:26.311 +03:00 [ERR] Error during user registration for Omar
+System.Exception: Username already exists
+   at VendingMachine.Infrastructure.Services.UserService.RegisterAsync(String username, String password, UserRole role) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\Services\UserService.cs:line 24
+   at VendingMachine.API.Controllers.AuthController.Register(CreateUserDto createUserDto) in C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\Controllers\AuthController.cs:line 30
+2025-07-12 18:26:26.342 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:26:26.349 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 1376.1667ms
+2025-07-12 18:26:26.351 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:26:26.360 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 400 null application/json; charset=utf-8 1480.5163ms
+2025-07-12 18:27:22.581 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-12 18:27:22.588 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:27:22.590 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:27:22.592 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:27:22.626 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Username] = @__username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-12 18:27:22.808 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Deposit], [PasswordHash], [Role], [UpdatedAt], [Username])
+OUTPUT INSERTED.[Id], INSERTED.[RowVersion]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-12 18:27:22.843 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:27:22.855 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 261.4653ms
+2025-07-12 18:27:22.858 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:27:22.862 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 200 null application/json; charset=utf-8 280.6274ms
+2025-07-12 18:27:35.161 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 49
+2025-07-12 18:27:35.165 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:27:35.168 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:27:35.176 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:27:35.281 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:27:35.320 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:27:35.326 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 148.5893ms
+2025-07-12 18:27:35.328 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:27:35.329 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 167.3822ms
+2025-07-12 18:27:44.146 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-12 18:27:44.152 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:27:44.162 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:27:44.230 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], [u].[Username] AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt], [p].[RowVersion]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+2025-07-12 18:27:44.233 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:27:44.237 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 73.3589ms
+2025-07-12 18:27:44.239 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:27:44.240 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 94.5744ms
+2025-07-12 18:27:59.190 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Products - application/json 70
+2025-07-12 18:27:59.194 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:27:59.240 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API)'
+2025-07-12 18:27:59.245 +03:00 [INF] Route matched with {action = "CreateProduct", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateProduct(VendingMachine.Core.DTOs.CreateProductDto) on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:27:59.280 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([AmountAvailable], [Cost], [CreatedAt], [ProductName], [SellerId], [UpdatedAt])
+OUTPUT INSERTED.[Id], INSERTED.[RowVersion]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-12 18:27:59.307 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[RowVersion], [p].[SellerId], [p].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+WHERE [p].[Id] = @__id_0
+2025-07-12 18:27:59.317 +03:00 [INF] Executing CreatedAtActionResult, writing value of type 'VendingMachine.Core.DTOs.ProductResponseDto'.
+2025-07-12 18:27:59.338 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API) in 91.8285ms
+2025-07-12 18:27:59.340 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API)'
+2025-07-12 18:27:59.341 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Products - 201 null application/json; charset=utf-8 150.8563ms
+2025-07-12 18:28:15.690 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 63
+2025-07-12 18:28:15.693 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:28:15.695 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:28:15.697 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:28:15.716 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Username] = @__username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-12 18:28:15.727 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Deposit], [PasswordHash], [Role], [UpdatedAt], [Username])
+OUTPUT INSERTED.[Id], INSERTED.[RowVersion]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-12 18:28:15.729 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:28:15.730 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 31.3533ms
+2025-07-12 18:28:15.731 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:28:15.732 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 200 null application/json; charset=utf-8 42.4328ms
+2025-07-12 18:28:21.368 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 50
+2025-07-12 18:28:21.372 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:28:21.373 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:28:21.374 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:28:21.385 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:28:21.392 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:28:21.395 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 19.2147ms
+2025-07-12 18:28:21.396 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:28:21.397 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 28.6997ms
+2025-07-12 18:28:41.711 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 45
+2025-07-12 18:28:41.714 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:28:41.720 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:28:41.725 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:28:41.734 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-12 18:28:41.749 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 21.7178ms
+2025-07-12 18:28:41.752 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:28:41.754 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 400 null application/problem+json; charset=utf-8 42.6867ms
+2025-07-12 18:30:51.910 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 41
+2025-07-12 18:30:51.914 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:30:51.919 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:30:51.920 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:30:51.928 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:30:51.929 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 7.5757ms
+2025-07-12 18:30:51.931 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:30:51.934 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 400 null application/json; charset=utf-8 23.8956ms
+2025-07-12 18:30:58.243 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-12 18:30:58.246 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:30:58.247 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:30:58.263 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], [u].[Username] AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt], [p].[RowVersion]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+2025-07-12 18:30:58.267 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:30:58.268 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 19.1053ms
+2025-07-12 18:30:58.270 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:30:58.273 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 30.0431ms
+2025-07-12 18:31:37.651 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/6 - null null
+2025-07-12 18:31:37.661 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:31:37.700 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:31:37.725 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:31:37.729 +03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:31:37.732 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 27.3563ms
+2025-07-12 18:31:37.733 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:31:37.735 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/6 - 404 null application/json; charset=utf-8 84.0096ms
+2025-07-12 18:31:49.320 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - null null
+2025-07-12 18:31:49.324 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:31:49.326 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:31:49.335 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:31:49.340 +03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:31:49.343 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 15.245ms
+2025-07-12 18:31:49.344 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:31:49.346 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - 404 null application/json; charset=utf-8 26.1362ms
+2025-07-12 18:31:57.441 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 50
+2025-07-12 18:31:57.444 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:31:57.445 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:31:57.446 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:31:57.492 +03:00 [INF] Executed DbCommand (41ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:31:57.496 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:31:57.498 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 49.9477ms
+2025-07-12 18:31:57.501 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:31:57.504 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 63.101ms
+2025-07-12 18:32:08.864 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - null null
+2025-07-12 18:32:08.870 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:32:08.871 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:32:08.894 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:32:08.897 +03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:32:08.899 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 24.3424ms
+2025-07-12 18:32:08.901 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:32:08.903 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - 404 null application/json; charset=utf-8 39.6419ms
+2025-07-12 18:32:34.204 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - null null
+2025-07-12 18:32:34.206 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:32:34.207 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:32:34.223 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:32:34.225 +03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:32:34.226 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 18.1169ms
+2025-07-12 18:32:34.227 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:32:34.228 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - 404 null application/json; charset=utf-8 23.5984ms
+2025-07-12 18:34:46.407 +03:00 [INF] Application is shutting down...
+2025-07-12 18:34:50.634 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 18:34:50.716 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-12 18:34:50.718 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 18:34:50.720 +03:00 [INF] Hosting environment: Development
+2025-07-12 18:34:50.720 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-12 18:34:54.626 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - null null
+2025-07-12 18:34:54.660 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-12 18:34:54.730 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:34:54.744 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:34:55.590 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:34:55.646 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:34:55.677 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 927.4542ms
+2025-07-12 18:34:55.681 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:34:55.690 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/10 - 200 null application/json; charset=utf-8 1064.7891ms
+2025-07-12 18:40:14.615 +03:00 [INF] Application is shutting down...
+2025-07-12 18:40:36.280 +03:00 [INF] User profile is available. Using 'C:\Users\osmohamed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-12 18:40:36.380 +03:00 [INF] Now listening on: http://localhost:5000
+2025-07-12 18:40:36.384 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-12 18:40:36.386 +03:00 [INF] Hosting environment: Development
+2025-07-12 18:40:36.387 +03:00 [INF] Content root path: C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API
+2025-07-12 18:40:48.425 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 62
+2025-07-12 18:40:48.474 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-07-12 18:40:48.478 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:40:48.586 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:40:48.616 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:40:49.837 +03:00 [INF] Executed DbCommand (36ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Username] = @__username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-12 18:40:50.017 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Deposit], [PasswordHash], [Role], [UpdatedAt], [Username])
+OUTPUT INSERTED.[Id], INSERTED.[RowVersion]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-12 18:40:50.048 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:40:50.070 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 1447.6232ms
+2025-07-12 18:40:50.072 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:40:50.082 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 200 null application/json; charset=utf-8 1659.928ms
+2025-07-12 18:41:01.198 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 49
+2025-07-12 18:41:01.203 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:41:01.206 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:41:01.218 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:41:01.276 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:41:01.302 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:41:01.306 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 86.9077ms
+2025-07-12 18:41:01.308 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:41:01.310 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 112.5267ms
+2025-07-12 18:41:20.804 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/11 - null null
+2025-07-12 18:41:20.817 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:41:20.823 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:41:20.916 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:41:20.918 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:41:20.919 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 93.8171ms
+2025-07-12 18:41:20.920 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:41:20.921 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/11 - 200 null application/json; charset=utf-8 116.1904ms
+2025-07-12 18:41:31.033 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-12 18:41:31.037 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:41:31.044 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:41:31.107 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], [u].[Username] AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt], [p].[RowVersion]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+2025-07-12 18:41:31.111 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:41:31.120 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 73.6161ms
+2025-07-12 18:41:31.121 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:41:31.122 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 89.2988ms
+2025-07-12 18:41:39.214 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Products - application/json 70
+2025-07-12 18:41:39.217 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:41:39.222 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API)'
+2025-07-12 18:41:39.229 +03:00 [INF] Route matched with {action = "CreateProduct", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateProduct(VendingMachine.Core.DTOs.CreateProductDto) on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:41:39.270 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = DateTime2), @p3='?' (Size = 100), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([AmountAvailable], [Cost], [CreatedAt], [ProductName], [SellerId], [UpdatedAt])
+OUTPUT INSERTED.[Id], INSERTED.[RowVersion]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-12 18:41:39.296 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AmountAvailable], [p].[Cost], [p].[CreatedAt], [p].[ProductName], [p].[RowVersion], [p].[SellerId], [p].[UpdatedAt], [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+WHERE [p].[Id] = @__id_0
+2025-07-12 18:41:39.308 +03:00 [INF] Executing CreatedAtActionResult, writing value of type 'VendingMachine.Core.DTOs.ProductResponseDto'.
+2025-07-12 18:41:39.325 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API) in 92.9714ms
+2025-07-12 18:41:39.327 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.CreateProduct (VendingMachine.API)'
+2025-07-12 18:41:39.328 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Products - 201 null application/json; charset=utf-8 114.4298ms
+2025-07-12 18:41:44.263 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-12 18:41:44.266 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:41:44.267 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:41:44.285 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], [u].[Username] AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt], [p].[RowVersion]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+2025-07-12 18:41:44.288 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:41:44.289 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 18.9395ms
+2025-07-12 18:41:44.291 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:41:44.294 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 30.7636ms
+2025-07-12 18:41:55.860 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/register - application/json 63
+2025-07-12 18:41:55.864 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:41:55.865 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:41:55.866 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(VendingMachine.Core.DTOs.CreateUserDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:41:55.874 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Username] = @__username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-12 18:41:55.883 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Deposit], [PasswordHash], [Role], [UpdatedAt], [Username])
+OUTPUT INSERTED.[Id], INSERTED.[RowVersion]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-07-12 18:41:55.887 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:41:55.889 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API) in 21.131ms
+2025-07-12 18:41:55.890 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Register (VendingMachine.API)'
+2025-07-12 18:41:55.891 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/register - 200 null application/json; charset=utf-8 30.7758ms
+2025-07-12 18:42:01.413 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Auth/login - application/json 50
+2025-07-12 18:42:01.416 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:42:01.417 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:42:01.418 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(VendingMachine.API.Controllers.LoginDto) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:42:01.432 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-07-12 18:42:01.464 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[VendingMachine.Core.DTOs.UserResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:42:01.471 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API) in 51.7394ms
+2025-07-12 18:42:01.480 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.Login (VendingMachine.API)'
+2025-07-12 18:42:01.482 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Auth/login - 200 null application/json; charset=utf-8 68.7703ms
+2025-07-12 18:42:07.280 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/11 - null null
+2025-07-12 18:42:07.284 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:42:07.285 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:42:07.301 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:42:07.304 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:42:07.305 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 18.4336ms
+2025-07-12 18:42:07.309 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:42:07.311 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/11 - 200 null application/json; charset=utf-8 30.4756ms
+2025-07-12 18:42:14.229 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/12 - null null
+2025-07-12 18:42:14.233 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:42:14.234 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:42:14.247 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:42:14.278 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:42:14.286 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 50.0859ms
+2025-07-12 18:42:14.296 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:42:14.298 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/12 - 200 null application/json; charset=utf-8 69.2389ms
+2025-07-12 18:42:34.069 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 51
+2025-07-12 18:42:34.072 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:42:34.075 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:42:34.079 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:42:34.102 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:42:34.119 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8) (DbType = Binary), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Deposit] = @p0, [UpdatedAt] = @p1
+OUTPUT INSERTED.[RowVersion]
+WHERE [Id] = @p2 AND [RowVersion] = @p3;
+2025-07-12 18:42:34.123 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:42:34.127 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 44.0381ms
+2025-07-12 18:42:34.128 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:42:34.129 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 200 null application/json; charset=utf-8 59.9657ms
+2025-07-12 18:42:38.033 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 51
+2025-07-12 18:42:38.036 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:42:38.038 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:42:38.040 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:42:38.051 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:42:38.061 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8) (DbType = Binary), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Deposit] = @p0, [UpdatedAt] = @p1
+OUTPUT INSERTED.[RowVersion]
+WHERE [Id] = @p2 AND [RowVersion] = @p3;
+2025-07-12 18:42:38.070 +03:00 [INF] Executing ConflictObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:42:38.071 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 28.9836ms
+2025-07-12 18:42:38.073 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:42:38.075 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 409 null application/json; charset=utf-8 41.8644ms
+2025-07-12 18:42:44.824 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 51
+2025-07-12 18:42:44.827 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:42:44.828 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:42:44.830 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:42:44.867 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:42:44.881 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8) (DbType = Binary), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Deposit] = @p0, [UpdatedAt] = @p1
+OUTPUT INSERTED.[RowVersion]
+WHERE [Id] = @p2 AND [RowVersion] = @p3;
+2025-07-12 18:42:44.885 +03:00 [INF] Executing ConflictObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:42:44.886 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 50.4921ms
+2025-07-12 18:42:44.887 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:42:44.888 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 409 null application/json; charset=utf-8 64.3647ms
+2025-07-12 18:42:53.564 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Auth/user/12 - null null
+2025-07-12 18:42:53.567 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:42:53.569 +03:00 [INF] Route matched with {action = "GetUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(Int32) on controller VendingMachine.API.Controllers.AuthController (VendingMachine.API).
+2025-07-12 18:42:53.581 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:42:53.584 +03:00 [INF] Executing OkObjectResult, writing value of type 'VendingMachine.Core.DTOs.UserResponseDto'.
+2025-07-12 18:42:53.585 +03:00 [INF] Executed action VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API) in 13.8055ms
+2025-07-12 18:42:53.586 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.AuthController.GetUser (VendingMachine.API)'
+2025-07-12 18:42:53.587 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Auth/user/12 - 200 null application/json; charset=utf-8 22.6314ms
+2025-07-12 18:43:06.027 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 51
+2025-07-12 18:43:06.030 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:43:06.031 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:43:06.032 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:43:06.058 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:43:06.082 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8) (DbType = Binary), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Deposit] = @p0, [UpdatedAt] = @p1
+OUTPUT INSERTED.[RowVersion]
+WHERE [Id] = @p2 AND [RowVersion] = @p3;
+2025-07-12 18:43:06.085 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`2[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:43:06.087 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 53.8459ms
+2025-07-12 18:43:06.095 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:43:06.096 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 200 null application/json; charset=utf-8 68.9927ms
+2025-07-12 18:43:13.876 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - application/json 51
+2025-07-12 18:43:13.879 +03:00 [INF] CORS policy execution successful.
+2025-07-12 18:43:13.882 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:43:13.883 +03:00 [INF] Route matched with {action = "Deposit", controller = "Buyer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Deposit(VendingMachine.Core.DTOs.DepositDto) on controller VendingMachine.API.Controllers.BuyerController (VendingMachine.API).
+2025-07-12 18:43:13.893 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Deposit], [u].[PasswordHash], [u].[Role], [u].[RowVersion], [u].[UpdatedAt], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-07-12 18:43:13.924 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p3='?' (Size = 8) (DbType = Binary), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Deposit] = @p0, [UpdatedAt] = @p1
+OUTPUT INSERTED.[RowVersion]
+WHERE [Id] = @p2 AND [RowVersion] = @p3;
+2025-07-12 18:43:13.929 +03:00 [INF] Executing ConflictObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-12 18:43:13.931 +03:00 [INF] Executed action VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API) in 44.5572ms
+2025-07-12 18:43:13.933 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.BuyerController.Deposit (VendingMachine.API)'
+2025-07-12 18:43:13.934 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/Buyer/deposit - 409 null application/json; charset=utf-8 57.6708ms
+2025-07-12 18:43:19.010 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Products - null null
+2025-07-12 18:43:19.013 +03:00 [INF] Executing endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:43:19.014 +03:00 [INF] Route matched with {action = "GetProducts", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProducts() on controller VendingMachine.API.Controllers.ProductsController (VendingMachine.API).
+2025-07-12 18:43:19.041 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[ProductName], [p].[AmountAvailable], [p].[Cost], [p].[SellerId], [u].[Username] AS [SellerName], [p].[CreatedAt], [p].[UpdatedAt], [p].[RowVersion]
+FROM [Products] AS [p]
+INNER JOIN [Users] AS [u] ON [p].[SellerId] = [u].[Id]
+2025-07-12 18:43:19.046 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[VendingMachine.Core.DTOs.ProductResponseDto, VendingMachine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-12 18:43:19.058 +03:00 [INF] Executed action VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API) in 41.9378ms
+2025-07-12 18:43:19.062 +03:00 [INF] Executed endpoint 'VendingMachine.API.Controllers.ProductsController.GetProducts (VendingMachine.API)'
+2025-07-12 18:43:19.063 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/Products - 200 null application/json; charset=utf-8 53.2214ms
+2025-07-12 18:53:41.267 +03:00 [INF] Application is shutting down...

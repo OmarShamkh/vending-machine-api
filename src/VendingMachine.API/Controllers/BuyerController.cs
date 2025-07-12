@@ -20,9 +20,20 @@ public class BuyerController : ControllerBase
     [HttpPost("deposit")]
     public async Task<IActionResult> Deposit([FromBody] DepositDto dto)
     {
+        if (dto.RowVersion == null)
+            return BadRequest(new { message = "RowVersion is required for concurrency control." });
         var userId = int.Parse(User.FindFirst("nameid")!.Value);
-        var deposit = await _buyerService.DepositAsync(userId, dto.Amount);
-        return Ok(new { deposit });
+        try
+        {
+            var deposit = await _buyerService.DepositAsync(userId, dto.Amount, dto.RowVersion);
+            // Fetch updated user to get new RowVersion
+            var user = await _buyerService.GetUserByIdAsync(userId);
+            return Ok(new { deposit, rowVersion = user?.RowVersion });
+        }
+        catch (Exception ex) when (ex.Message.Contains("concurrent update"))
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
 
     [HttpPost("buy")]
@@ -30,15 +41,28 @@ public class BuyerController : ControllerBase
     {
         var userId = int.Parse(User.FindFirst("nameid")!.Value);
         var result = await _buyerService.BuyAsync(userId, dto.ProductId, dto.Amount);
-        return Ok(result);
+        // Fetch updated user to get new RowVersion
+        var user = await _buyerService.GetUserByIdAsync(userId);
+        return Ok(new { result, rowVersion = user?.RowVersion });
     }
 
     [HttpPost("reset")]
-    public async Task<IActionResult> Reset()
+    public async Task<IActionResult> Reset([FromBody] ResetDto dto)
     {
+        if (dto.RowVersion == null)
+            return BadRequest(new { message = "RowVersion is required for concurrency control." });
         var userId = int.Parse(User.FindFirst("nameid")!.Value);
-        var result = await _buyerService.ResetAsync(userId);
-        return Ok(result);
+        try
+        {
+            var result = await _buyerService.ResetAsync(userId, dto.RowVersion);
+            // Fetch updated user to get new RowVersion
+            var user = await _buyerService.GetUserByIdAsync(userId);
+            return Ok(new { result, rowVersion = user?.RowVersion });
+        }
+        catch (Exception ex) when (ex.Message.Contains("concurrent update"))
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
 
     [HttpGet("coins")]

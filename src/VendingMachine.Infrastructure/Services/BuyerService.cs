@@ -2,6 +2,7 @@ using VendingMachine.Core.DTOs;
 using VendingMachine.Core.Entities;
 using VendingMachine.Core.Services;
 using VendingMachine.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendingMachine.Infrastructure.Services;
 
@@ -16,7 +17,7 @@ public class BuyerService
         _coinService = coinService;
     }
 
-    public async Task<decimal> DepositAsync(int userId, int amount)
+    public async Task<decimal> DepositAsync(int userId, int amount, byte[] rowVersion)
     {
         if (!_coinService.IsValidCoin(amount))
             throw new Exception("Invalid coin denomination. Only 5, 10, 20, 50, and 100 cent coins are accepted");
@@ -25,9 +26,20 @@ public class BuyerService
         if (user == null) 
             throw new Exception("User not found");
 
+        if (rowVersion == null)
+            throw new Exception("RowVersion is required for concurrency control.");
+        _context.Entry(user).Property("RowVersion").OriginalValue = rowVersion;
+
         user.Deposit += amount;
         user.UpdatedAt = DateTime.UtcNow;
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new Exception("Deposit failed due to a concurrent update. Please try again.");
+        }
         return user.Deposit;
     }
 
@@ -75,6 +87,11 @@ public class BuyerService
             await _context.SaveChangesAsync();
             await dbTransaction.CommitAsync();
         }
+        catch (DbUpdateConcurrencyException)
+        {
+            await dbTransaction.RollbackAsync();
+            throw new Exception("Purchase failed due to a concurrent update. Please try again.");
+        }
         catch
         {
             await dbTransaction.RollbackAsync();
@@ -101,21 +118,37 @@ public class BuyerService
         };
     }
 
-    public async Task<ResetResponseDto> ResetAsync(int userId)
+    public async Task<ResetResponseDto> ResetAsync(int userId, byte[] rowVersion)
     {
         var user = await _context.Users.FindAsync(userId);
         if (user == null) 
             throw new Exception("User not found");
 
+        if (rowVersion == null)
+            throw new Exception("RowVersion is required for concurrency control.");
+        _context.Entry(user).Property("RowVersion").OriginalValue = rowVersion;
+
         var previousDeposit = user.Deposit;
         user.Deposit = 0;
         user.UpdatedAt = DateTime.UtcNow;
-        await _context.SaveChangesAsync();
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new Exception("Reset failed due to a concurrent update. Please try again.");
+        }
         return new ResetResponseDto
         {
             PreviousDeposit = previousDeposit,
             NewDeposit = user.Deposit
         };
+    }
+
+    public async Task<User?> GetUserByIdAsync(int userId)
+    {
+        return await _context.Users.FindAsync(userId);
     }
 
     public int[] GetValidCoins()

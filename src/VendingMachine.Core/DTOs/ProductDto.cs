@@ -27,6 +27,8 @@ public class UpdateProductDto
 
     [Range(5, double.MaxValue, ErrorMessage = "Cost must be at least 5 cents")]
     public decimal? Cost { get; set; }
+
+    public byte[]? RowVersion { get; set; }
 }
 
 public class ProductResponseDto
@@ -39,4 +41,5 @@ public class ProductResponseDto
     public string SellerName { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    public byte[]? RowVersion { get; set; }
 } 

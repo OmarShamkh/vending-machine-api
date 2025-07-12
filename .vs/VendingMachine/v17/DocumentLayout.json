@@ -1,0 +1,189 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4C67F5BD-D038-4CED-A230-724EC2E4A107}|src\\VendingMachine.Core\\VendingMachine.Core.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\src\\vendingmachine.core\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C67F5BD-D038-4CED-A230-724EC2E4A107}|src\\VendingMachine.Core\\VendingMachine.Core.csproj|solutionrelative:src\\vendingmachine.core\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B261832-AE52-42F1-B653-9AA9AD582353}|src\\VendingMachine.Infrastructure\\VendingMachine.Infrastructure.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\src\\vendingmachine.infrastructure\\services\\buyerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B261832-AE52-42F1-B653-9AA9AD582353}|src\\VendingMachine.Infrastructure\\VendingMachine.Infrastructure.csproj|solutionrelative:src\\vendingmachine.infrastructure\\services\\buyerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|src\\VendingMachine.API\\VendingMachine.API.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\src\\vendingmachine.api\\controllers\\buyercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|src\\VendingMachine.API\\VendingMachine.API.csproj|solutionrelative:src\\vendingmachine.api\\controllers\\buyercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B261832-AE52-42F1-B653-9AA9AD582353}|src\\VendingMachine.Infrastructure\\VendingMachine.Infrastructure.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\src\\vendingmachine.infrastructure\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B261832-AE52-42F1-B653-9AA9AD582353}|src\\VendingMachine.Infrastructure\\VendingMachine.Infrastructure.csproj|solutionrelative:src\\vendingmachine.infrastructure\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|src\\VendingMachine.API\\VendingMachine.API.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\src\\vendingmachine.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|src\\VendingMachine.API\\VendingMachine.API.csproj|solutionrelative:src\\vendingmachine.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C67F5BD-D038-4CED-A230-724EC2E4A107}|src\\VendingMachine.Core\\VendingMachine.Core.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\src\\vendingmachine.core\\services\\coinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C67F5BD-D038-4CED-A230-724EC2E4A107}|src\\VendingMachine.Core\\VendingMachine.Core.csproj|solutionrelative:src\\vendingmachine.core\\services\\coinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52D06AF6-5E84-470B-A76B-6ED64607317E}|tests\\VendingMachine.Tests\\VendingMachine.Tests.csproj|c:\\users\\osmohamed\\documents\\omar\\vending-machine\\tests\\vendingmachine.tests\\services\\coinservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52D06AF6-5E84-470B-A76B-6ED64607317E}|tests\\VendingMachine.Tests\\VendingMachine.Tests.csproj|solutionrelative:tests\\vendingmachine.tests\\services\\coinservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Core\\Entities\\Transaction.cs",
+              "RelativeDocumentMoniker": "src\\VendingMachine.Core\\Entities\\Transaction.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Core\\Entities\\Transaction.cs",
+              "RelativeToolTip": "src\\VendingMachine.Core\\Entities\\Transaction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T15:01:41.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CoinServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\tests\\VendingMachine.Tests\\Services\\CoinServiceTests.cs",
+              "RelativeDocumentMoniker": "tests\\VendingMachine.Tests\\Services\\CoinServiceTests.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\tests\\VendingMachine.Tests\\Services\\CoinServiceTests.cs",
+              "RelativeToolTip": "tests\\VendingMachine.Tests\\Services\\CoinServiceTests.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T14:56:02.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Infrastructure\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "src\\VendingMachine.Infrastructure\\Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Infrastructure\\Services\\ProductService.cs",
+              "RelativeToolTip": "src\\VendingMachine.Infrastructure\\Services\\ProductService.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAA9wFMAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T14:54:35.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "src\\VendingMachine.API\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "src\\VendingMachine.API\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAkwDkAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T14:54:22.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CoinService.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Core\\Services\\CoinService.cs",
+              "RelativeDocumentMoniker": "src\\VendingMachine.Core\\Services\\CoinService.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Core\\Services\\CoinService.cs",
+              "RelativeToolTip": "src\\VendingMachine.Core\\Services\\CoinService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T14:53:29.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BuyerService.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Infrastructure\\Services\\BuyerService.cs",
+              "RelativeDocumentMoniker": "src\\VendingMachine.Infrastructure\\Services\\BuyerService.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.Infrastructure\\Services\\BuyerService.cs",
+              "RelativeToolTip": "src\\VendingMachine.Infrastructure\\Services\\BuyerService.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAkwEkAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T14:50:55.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BuyerController.cs",
+              "DocumentMoniker": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.API\\Controllers\\BuyerController.cs",
+              "RelativeDocumentMoniker": "src\\VendingMachine.API\\Controllers\\BuyerController.cs",
+              "ToolTip": "C:\\Users\\osmohamed\\Documents\\Omar\\Vending-machine\\src\\VendingMachine.API\\Controllers\\BuyerController.cs",
+              "RelativeToolTip": "src\\VendingMachine.API\\Controllers\\BuyerController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAkwDEAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-12T14:50:14.186Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 649,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

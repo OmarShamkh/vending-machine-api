@@ -24,6 +24,7 @@ public class UserResponseDto
     public decimal Deposit { get; set; }
     public UserRole Role { get; set; }
     public DateTime CreatedAt { get; set; }
+    public byte[]? RowVersion { get; set; }
 }
 
 public class UpdateUserDto
@@ -31,4 +32,16 @@ public class UpdateUserDto
     [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters")]
     public string? Password { get; set; }
     public UserRole? Role { get; set; }
+    public byte[]? RowVersion { get; set; }
+}
+
+public class DepositDto
+{
+    public int Amount { get; set; }
+    public byte[]? RowVersion { get; set; }
+}
+
+public class ResetDto
+{
+    public byte[]? RowVersion { get; set; }
 } 
