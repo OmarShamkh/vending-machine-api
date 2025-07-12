@@ -149,3 +149,4 @@ C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\obj\Deb
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\obj\Debug\net8.0\VendingMachine.API.genruntimeconfig.cache
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\obj\Debug\net8.0\ref\VendingMachine.API.dll
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.API\obj\Debug\net8.0\VendingMachine.API.sourcelink.json

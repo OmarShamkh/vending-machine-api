@@ -10,3 +10,4 @@ C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\De
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\refint\VendingMachine.Core.dll
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.pdb
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\ref\VendingMachine.Core.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Core\obj\Debug\net8.0\VendingMachine.Core.sourcelink.json

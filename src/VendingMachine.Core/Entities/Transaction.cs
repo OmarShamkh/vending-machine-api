@@ -9,7 +9,7 @@ public class Transaction
     public int Id { get; set; }
 
     [Required]
-    public string BuyerId { get; set; } = string.Empty;
+    public int BuyerId { get; set; }
 
     [Required]
     public int ProductId { get; set; }

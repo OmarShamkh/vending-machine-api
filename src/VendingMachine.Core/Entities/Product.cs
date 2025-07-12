@@ -21,7 +21,7 @@ public class Product
     public decimal Cost { get; set; }
 
     [Required]
-    public string SellerId { get; set; } = string.Empty;
+    public int SellerId { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;

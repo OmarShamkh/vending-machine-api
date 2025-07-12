@@ -1,14 +1,12 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Text;
-using VendingMachine.Core.Entities;
 using VendingMachine.Core.Services;
 using VendingMachine.Infrastructure.Data;
 using VendingMachine.API.Services;
-using Microsoft.OpenApi.Models;
+using VendingMachine.Infrastructure.Services;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,26 +21,26 @@ builder.Host.UseSerilog();
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
+builder.Services.AddSwaggerGen(options =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vending Machine API", Version = "v1" });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "VendingMachine API", Version = "v1" });
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
-        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
         Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
         Scheme = "bearer",
         BearerFormat = "JWT"
     });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
     {
         {
-            new OpenApiSecurityScheme
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
                 {
-                    Type = ReferenceType.SecurityScheme,
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
                     Id = "Bearer"
                 }
             },
@@ -55,17 +53,13 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<VendingMachineDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configure Identity
-builder.Services.AddIdentity<User, IdentityRole>(options =>
-{
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequiredLength = 6;
-})
-.AddEntityFrameworkStores<VendingMachineDbContext>()
-.AddDefaultTokenProviders();
+// Register custom services
+builder.Services.AddScoped<ICoinService, CoinService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<PasswordHasher>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<BuyerService>();
+builder.Services.AddScoped<UserService>();
 
 // Configure JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
@@ -73,8 +67,8 @@ var key = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"] ?? "YourSuperSecretKe
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = "Bearer";
+    options.DefaultChallengeScheme = "Bearer";
 })
 .AddJwtBearer(options =>
 {
@@ -86,20 +80,22 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = false,
         ValidateAudience = false,
-        ClockSkew = TimeSpan.Zero
+        ClockSkew = TimeSpan.Zero,
+        RoleClaimType = "role",
+        NameClaimType = ClaimTypes.Name
     };
+    
+    // This is critical for properly mapping JWT claims to ClaimTypes
+    options.MapInboundClaims = false;
 });
 
-// Configure Authorization
+// Configure Authorization with custom policies
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("BuyerOnly", policy => policy.RequireRole("Buyer"));
-    options.AddPolicy("SellerOnly", policy => policy.RequireRole("Seller"));
+    options.AddPolicy("SellerOnly", policy => policy.RequireClaim("role", "Seller"));
+    
+    options.AddPolicy("BuyerOnly", policy => policy.RequireClaim("role", "Buyer"));
 });
-
-// Register Services
-builder.Services.AddScoped<ICoinService, CoinService>();
-builder.Services.AddScoped<IJwtService, JwtService>();
 
 // Configure CORS
 builder.Services.AddCors(options =>
@@ -115,7 +111,6 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -126,36 +121,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Ensure database is created
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<VendingMachineDbContext>();
-    context.Database.EnsureCreated();
-
-    // SEED ROLES
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    string[] roles = new[] { "Seller", "Buyer" };
-    foreach (var role in roles)
-    {
-        if (!roleManager.RoleExistsAsync(role).Result)
-        {
-            roleManager.CreateAsync(new IdentityRole(role)).Wait();
-        }
-    }
-}
-
-try
-{
-    Log.Information("Starting Vending Machine API");
-    app.Run();
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Application terminated unexpectedly");
-}
-finally
-{
-    Log.CloseAndFlush();
-} 
-
-public partial class Program { } 
+app.Run();

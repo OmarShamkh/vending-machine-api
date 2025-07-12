@@ -15,3 +15,4 @@ C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastruct
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.pdb
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.genruntimeconfig.cache
 C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\ref\VendingMachine.Infrastructure.dll
+C:\Users\osmohamed\Documents\Omar\Vending-machine\src\VendingMachine.Infrastructure\obj\Debug\net8.0\VendingMachine.Infrastructure.sourcelink.json

@@ -53,7 +53,6 @@ public class CoinServiceTests
         var totalCoins = result.Values.Sum();
         totalCoins.Should().Be(expectedTotalCoins);
 
-        // Verify the total value equals the input amount
         var totalValue = result.Sum(kvp => kvp.Key * kvp.Value);
         totalValue.Should().Be(amount);
     }
@@ -85,7 +84,6 @@ public class CoinServiceTests
         var result = _coinService.CalculateChange(amount);
 
         // Assert
-        // Verify we use the largest denominations first
         var sortedCoins = result.Keys.OrderByDescending(k => k).ToList();
         var resultCoins = result.Where(kvp => kvp.Value > 0).Select(kvp => kvp.Key).OrderByDescending(k => k).ToList();
         

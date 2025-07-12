@@ -35,7 +35,7 @@ public class ProductResponseDto
     public string ProductName { get; set; } = string.Empty;
     public int AmountAvailable { get; set; }
     public decimal Cost { get; set; }
-    public string SellerId { get; set; } = string.Empty;
+    public int SellerId { get; set; }
     public string SellerName { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }

@@ -1,6 +1,3 @@
-using VendingMachine.Core.Enums;
-using VendingMachine.Core.Exceptions;
-
 namespace VendingMachine.Core.Services;
 
 public class CoinService : ICoinService
@@ -18,9 +15,8 @@ public class CoinService : ICoinService
             return new Dictionary<int, int>();
 
         var change = new Dictionary<int, int>();
-        var remainingAmount = (int)amount; // Convert to cents
+        var remainingAmount = (int)amount; 
 
-        // Sort coins in descending order to give largest denominations first
         var sortedCoins = _validCoins.OrderByDescending(c => c).ToArray();
 
         foreach (var coin in sortedCoins)

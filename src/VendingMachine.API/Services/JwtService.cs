@@ -3,7 +3,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using VendingMachine.Core.Entities;
-using VendingMachine.Core.Enums;
 
 namespace VendingMachine.API.Services;
 
@@ -23,26 +22,26 @@ public class JwtService : IJwtService
     }
 
     public string GenerateToken(User user)
+{
+    var jwtSettings = _configuration.GetSection("JwtSettings");
+    var key = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"] ?? "YourSuperSecretKeyHere12345678901234567890");
+
+    var tokenHandler = new JwtSecurityTokenHandler();
+    var tokenDescriptor = new SecurityTokenDescriptor
     {
-        var jwtSettings = _configuration.GetSection("JwtSettings");
-        var key = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"] ?? "YourSuperSecretKeyHere12345678901234567890");
-
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var tokenDescriptor = new SecurityTokenDescriptor
+        Subject = new ClaimsIdentity(new[]
         {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, user.UserName ?? ""),
-                new Claim(ClaimTypes.Role, user.Role.ToString())
-            }),
-            Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["ExpirationInMinutes"] ?? "60")),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
+            new Claim("nameid", user.Id.ToString()),
+            new Claim("unique_name", user.Username ?? ""),
+            new Claim("role", user.Role.ToString())
+        }),
+        Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["ExpirationInMinutes"] ?? "60")),
+        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    };
 
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
-    }
+    var token = tokenHandler.CreateToken(tokenDescriptor);
+    return tokenHandler.WriteToken(token);
+}
 
     public ClaimsPrincipal? ValidateToken(string token)
     {
