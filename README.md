@@ -129,6 +129,7 @@ Vending-machine/
 ### Installation
 
 ```bash
+git clone https://github.com/OmarShamkh/vending-machine-api.git
 cd Vending-machine
 dotnet restore
 dotnet build
